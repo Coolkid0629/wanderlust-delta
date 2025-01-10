@@ -1,0 +1,76 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <!-- <h3>All Listings</h3> -->
+  <div id="filters">
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-bed"></i></div>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-mountain-city"></i></div>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-mountain"></i></div>
+      <p>Scenic</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Medival</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Pools</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-city"></i></div>
+      <p>Cities</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-tree"></i></div>
+      <p>Forest</p>
+    </div>
+    <div class="filter">
+      <div class="filter-icon"><i class="fa-solid fa-horse"></i></div>
+      <p>Suburbs</p>
+    </div>
+    <div class="form-check-reverse form-switch filter-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault"
+        >Display total after taxes</label
+      >
+    </div>
+  </div>
+  <br />
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for (let listing of listings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing_img_<%= listing._id %>"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />
+            &dollar; <%= listing.price.toLocaleString("en-US") %> / night
+            <i id="tax-info" class="tax-info">&nbsp;&nbsp; +18% Tax</i>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+</body>
